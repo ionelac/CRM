@@ -1,8 +1,23 @@
+using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.DependencyInjection;
+using CRM.Data;
+using Microsoft.AspNetCore.Identity;
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddRazorPages();
+builder.Services.AddDbContext<CRMContext>(options =>
+    options.UseSqlServer(builder.Configuration.GetConnectionString("CRMContext") ?? throw new InvalidOperationException("Connection string 'CRMContext' not found.")));
 
+//builder.Services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = true)
+  //  .AddEntityFrameworkStores<LibraryIdentityContext>();
+
+builder.Services.AddDbContext<LibraryIdentityContext>(options =>
+options.UseSqlServer(builder.Configuration.GetConnectionString("CRMContext") ?? throw new InvalidOperationException("Connection string 'CRMContextt' not found.")));
+
+builder.Services.AddDefaultIdentity<IdentityUser>(options =>
+options.SignIn.RequireConfirmedAccount = true)
+.AddEntityFrameworkStores<LibraryIdentityContext>();
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
@@ -17,6 +32,7 @@ app.UseHttpsRedirection();
 app.UseStaticFiles();
 
 app.UseRouting();
+app.UseAuthentication();;
 
 app.UseAuthorization();
 

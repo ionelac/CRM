@@ -1,0 +1,90 @@
+﻿@page
+@model CRM.Pages.Pipelines.IndexModel
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Index</h1>
+
+<p>
+    <a asp-page="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Pipeline[0].Name)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Pipeline[0].ExpectedRevenue)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Pipeline[0].Contact.ContactName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Pipeline[0].Email)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Pipeline[0].Phone)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Pipeline[0].Salesperson.FullName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Pipeline[0].Department)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Pipeline[0].LogNote)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Pipeline[0].TaskName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Pipeline[0].TaskDeadline)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model.Pipeline) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ExpectedRevenue)
+            </td>
+            <td>
+                    @Html.DisplayFor(modelItem => item.Contact.ContactName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Email)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Phone)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Salesperson.FullName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Department)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.LogNote)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.TaskName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.TaskDeadline)
+            </td>
+            <td>
+                <a asp-page="./Edit" asp-route-id="@item.ID">Edit</a> |
+                <a asp-page="./Details" asp-route-id="@item.ID">Details</a> |
+                <a asp-page="./Delete" asp-route-id="@item.ID">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

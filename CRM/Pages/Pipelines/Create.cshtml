@@ -1,0 +1,79 @@
+﻿@page
+@model CRM.Pages.Pipelines.CreateModel
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+<h1>Create</h1>
+
+<h4>Pipeline</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form method="post">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="Pipeline.Name" class="control-label"></label>
+                <input asp-for="Pipeline.Name" class="form-control" />
+                <span asp-validation-for="Pipeline.Name" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Pipeline.ExpectedRevenue" class="control-label"></label>
+                <input asp-for="Pipeline.ExpectedRevenue" class="form-control" />
+                <span asp-validation-for="Pipeline.ExpectedRevenue" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Pipeline.ContactID" class="control-label">Customer</label>
+                <select asp-for="Pipeline.ContactID" class="form-control" asp-items="ViewBag.ContactID"></select>
+                <span asp-validation-for="Pipeline.ContactID" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Pipeline.Email" class="control-label"></label>
+                <input asp-for="Pipeline.Email" class="form-control" />
+                <span asp-validation-for="Pipeline.Email" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Pipeline.Phone" class="control-label"></label>
+                <input asp-for="Pipeline.Phone" class="form-control" />
+                <span asp-validation-for="Pipeline.Phone" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Pipeline.SalespersonID" class="control-label">Salesperson</label>
+                <select asp-for="Pipeline.SalespersonID" class="form-control" asp-items="ViewBag.SalespersonID"></select>
+                <span asp-validation-for="Pipeline.SalespersonID" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Pipeline.Department" class="control-label"></label>
+                <input asp-for="Pipeline.Department" class="form-control" />
+                <span asp-validation-for="Pipeline.Department" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Pipeline.LogNote" class="control-label"></label>
+                <input asp-for="Pipeline.LogNote" class="form-control" />
+                <span asp-validation-for="Pipeline.LogNote" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Pipeline.TaskName" class="control-label"></label>
+                <input asp-for="Pipeline.TaskName" class="form-control" />
+                <span asp-validation-for="Pipeline.TaskName" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Pipeline.TaskDeadline" class="control-label"></label>
+                <input asp-for="Pipeline.TaskDeadline" class="form-control" />
+                <span asp-validation-for="Pipeline.TaskDeadline" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-page="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
